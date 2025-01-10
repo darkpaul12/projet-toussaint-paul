@@ -1,0 +1,10 @@
+<div *ngFor="let character of characters">
+  <div class="container-personnage">
+    <img [src]="character.image" alt="{{ character.name }} Image">
+    <div class="character-details">
+      <p><strong>Nom :</strong> {{ character.name }}</p>
+      <p><strong>Niveau de Puissance :</strong> {{ character.powerLevel }}</p>
+      <p><strong>Description :</strong> {{ character.description }}</p>
+    </div>
+  </div>
+</div>

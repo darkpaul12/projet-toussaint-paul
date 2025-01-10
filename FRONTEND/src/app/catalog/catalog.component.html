@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .image-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 100vh;
+    }
+
+      .image-container img {
+        max-width: 50%;
+        max-height: 50%;
+      }
+  </style>
+</head>
+<body>
+  <div *ngIf="(connectionStatus | async) == false">
+    Veuillez-vous connecter pour voir les produits de notre catalogue !
+  </div>
+
+  <div *ngIf="connectionStatus | async">
+    <div class="form-group">
+      <label for="product-search">Nom du produit: </label>
+      <input #searchinput id="product-saerch" type="text" class="form-control" placeholder="Rechercher un produit" value="" />
+    </div>
+    <div class="flex justify-around my-5" *ngIf="model | async as products">
+      <div *ngFor="let p of products">
+        <div><img class="object-cover h-56 w-56" alt="product img" src="{{ p.imglink }}" /></div>
+        <div>{{ p.name }}</div>
+        <div>{{ p.description }}</div>
+        <div>{{ p.price }}</div>
+        <button class="border border-slate-300 px-2" (click)="addToCart(p)">Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

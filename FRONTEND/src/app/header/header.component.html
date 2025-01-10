@@ -1,0 +1,21 @@
+<div class="flex justify-between items-center bg-gray-800 text-white p-4">
+  <div class="flex-none">
+    <a routerLink="/"></a>
+    <img src="https://upload.wikimedia.org/wikipedia/fr/f/f2/Dragon_Ball_Z_Logo.svg" class="w-17 h-16" alt="Dragon Ball Z Logo">
+
+  </div>
+  <div class="flex-none space-x-10">
+    <a routerLink="/" class="hover:text-blue-600">Accueil</a>
+    <a routerLink="/about" class="hover:text-blue-600">À propos de nous</a>
+    <a routerLink="/catalog" class="hover:text-blue-600">Notre catalogue</a>
+    <a routerLink="/characters" class="hover:text-blue-600">Personnages</a>
+  </div>
+  <div *ngIf="(connectionStatus | async) == false" class="flex-none space-x-5">
+    <a routerLink="/connection" class="hover:text-blue-600">Connexion</a>
+    <a routerLink="/account-creation" class="hover:text-blue-600">Inscription</a>
+  </div>
+  <div *ngIf="connectionStatus | async" class="flex-none space-x-5">
+    <a routerLink="/cart" class="hover:text-blue-600">Panier</a>
+  </div>
+</div>
+<hr class="border-t border-gray-300 my-4" />

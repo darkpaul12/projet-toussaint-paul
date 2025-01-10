@@ -1,0 +1,16 @@
+body, html {
+  height: 50%;
+  margin: 0;
+}
+
+.full-page {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: url('https://p325k7wa.twic.pics/high/dragon-ball/dragonball-xenoverse-2/00-page-setup/revamp/DBXV2-bg-1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  padding: 50px;
+}

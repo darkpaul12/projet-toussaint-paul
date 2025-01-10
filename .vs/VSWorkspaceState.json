@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\FRONTEND",
+    "\\FRONTEND\\images",
+    "\\FRONTEND\\src",
+    "\\FRONTEND\\src\\app",
+    "\\FRONTEND\\src\\app\\connection",
+    "\\FRONTEND\\src\\app\\shared",
+    "\\FRONTEND\\src\\app\\shared\\action",
+    "\\FRONTEND\\src\\app\\shared\\states",
+    "\\FRONTEND\\src\\assets"
+  ],
+  "SelectedNode": "\\FRONTEND\\src\\app\\shared\\states\\cart-state.ts",
+  "PreviewInSolutionExplorer": false
+}

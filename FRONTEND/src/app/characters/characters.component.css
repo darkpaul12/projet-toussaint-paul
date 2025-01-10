@@ -1,0 +1,26 @@
+
+.container-personnage {
+  border: 10px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  margin-top: 5px;
+  color: #666;
+}
+
+.container-personnage {
+  display: flex;
+  align-items: center;
+}
+
+.character-details {
+  margin-left: 20px;
+}

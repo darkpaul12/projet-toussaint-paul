@@ -1,0 +1,27 @@
+
+:host {
+  background-image: url('https://image.noelshack.com/fichiers/2017/52/4/1514416908-goku.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Adjust the height as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Set text color to contrast with the background */
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#product-search{
+    color: black;
+    padding: 0 10px;
+}
+
+
+
+/* Add other styles as needed */
