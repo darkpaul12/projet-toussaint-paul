@@ -2,10 +2,10 @@
 module.exports = {
     ACCESS_TOKEN_SECRET: "EMMA123",
     BDD: {
-        "host": "dpg-cm23jlq1hbls73bu59bg-a.frankfurt-postgres.render.com",
+        "host": "dpg-ctsigpi3esus73dqmjog-a.frankfurt-postgres.render.com",
         "port": "",
-        "user": "postgrepaul_user",
-        "password": "KPMK4DzvqyyUcZfN2cPuMMBfxAIlju0y",
-        "bdname": "postgrepaul"
+        "user": "postgrepaul_omr5_user",
+        "password": "Tdcejkao8o0tYfKl3xQ6iR46H9ekpBpX",
+        "bdname": "postgrepaul_omr5"
     }
 }
