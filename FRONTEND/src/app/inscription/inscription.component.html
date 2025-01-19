@@ -10,9 +10,11 @@
     }
 
     .background-container {
-      background-image: url('https://c4.wallpaperflare.com/wallpaper/445/523/677/dragon-ball-dragon-ball-z-frieza-dragon-ball-goku-wallpaper-preview.jpg');
+      /*background-image: url('https://c4.wallpaperflare.com/wallpaper/445/523/677/dragon-ball-dragon-ball-z-frieza-dragon-ball-goku-wallpaper-preview.jpg');*/
+      background: url('https://c4.wallpaperflare.com/wallpaper/445/523/677/dragon-ball-dragon-ball-z-frieza-dragon-ball-goku-wallpaper-preview.jpg') no-repeat center center fixed;
       background-size: cover;
       background-position: center;
+      position: relative;
       height: 105vh;
       display: flex;
       justify-content: center;
@@ -20,24 +22,35 @@
     }
 
     .form-container {
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.9);
       padding: 20px;
       border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 350px;
     }
 
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 3px;
     }
 
     label {
+      font-weight: bold;
+      display: block;
       margin-bottom: 5px;
     }
 
     .form-control {
       width: 100%;
-      padding: 8px;
+      padding: 1px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
     }
 
     .submit-button {
@@ -47,16 +60,20 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 14px;
+      width: 100%;
     }
 
-      .submit-button:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-      }
+    .submit-button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
 
     .success-message {
       text-align: center;
       margin-top: 10px;
+      color: green;
+      font-weight: bold;
     }
 
     .login-link {
@@ -66,63 +83,127 @@
 
     .login-anchor {
       color: #007bff;
+      text-decoration: none;
+    }
+
+    .login-anchor:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="background-container">
-    <form [formGroup]="accountCreationForm" class="form-container">
+    <form [formGroup]="accountCreationForm" class="form-container" (ngSubmit)="Inscription()">
+      <!-- Nom d'utilisateur -->
       <div class="form-group">
         <label for="username">Nom d'utilisateur :</label>
         <input class="form-control" formControlName="username" id="username" />
+        <div class="error-message" *ngIf="username?.invalid && username?.touched">
+          <p *ngIf="username?.errors?.['required']">Le nom d'utilisateur est obligatoire.</p>
+          <p *ngIf="username?.errors?.['minlength']">Le nom d'utilisateur doit comporter au moins 3 caractères.</p>
+          <p *ngIf="username?.errors?.['pattern']">Le nom d'utilisateur ne doit contenir que des lettres et chiffres (pas d'espaces ni de caractères spéciaux).</p>
+        </div>
       </div>
+      <!-- Nom -->
       <div class="form-group">
         <label for="lastname">Nom :</label>
         <input class="form-control" formControlName="lastname" id="lastname" />
+        <div class="error-message" *ngIf="lastname?.invalid && lastname?.touched">
+          <p *ngIf="lastname?.errors?.['required']">Le nom est obligatoire.</p>
+          <p *ngIf="lastname?.errors?.['pattern']">Le nom ne doit contenir que des lettres (sans espace ni tiret).</p>
+        </div>
       </div>
+      <!-- Prénom -->
       <div class="form-group">
         <label for="firstname">Prénom :</label>
         <input class="form-control" formControlName="firstname" id="firstname" />
+        <div class="error-message" *ngIf="firstname?.invalid && firstname?.touched">
+          <p *ngIf="firstname?.errors?.['required']">Le prénom est obligatoire.</p>
+          <p *ngIf="firstname?.errors?.['pattern']">Le prénom ne doit contenir que des lettres (sans espace ni tiret).</p>
+        </div>
       </div>
+      <!-- Adresse -->
       <div class="form-group">
         <label for="address">Adresse :</label>
         <input class="form-control" formControlName="address" id="address" />
+        <div class="error-message" *ngIf="address?.invalid && address?.touched">
+          <p *ngIf="address?.errors?.['required']">L'adresse est obligatoire.</p>
+        </div>
       </div>
+      <!-- Code postal -->
       <div class="form-group">
         <label for="postal">Code postal :</label>
         <input class="form-control" formControlName="postal" id="postal" />
+        <div class="error-message" *ngIf="postal?.invalid && postal?.touched">
+          <p *ngIf="postal?.errors?.['required']">Le code postal est obligatoire.</p>
+          <p *ngIf="postal?.errors?.['pattern']">Le code postal doit contenir 5 chiffres.</p>
+        </div>
       </div>
+      <!-- Ville -->
       <div class="form-group">
         <label for="city">Ville :</label>
         <input class="form-control" formControlName="city" id="city" />
+        <div class="error-message" *ngIf="city?.invalid && city?.touched">
+          <p *ngIf="city?.errors?.['required']">La ville est obligatoire.</p>
+          <p *ngIf="city?.errors?.['pattern']">La ville ne doit contenir que des lettres (sans espace ni tiret).</p>
+        </div>
       </div>
+      <!-- Sexe -->
       <div class="form-group">
         <label for="gender">Sexe :</label>
-        <input class="form-control" formControlName="gender" id="gender" />
+        <select class="form-control" formControlName="gender" id="gender">
+          <option value="" disabled selected>Choisissez votre sexe</option>
+          <option value="H">Homme</option>
+          <option value="F">Femme</option>
+        </select>
+        <div class="error-message" *ngIf="gender?.invalid && gender?.touched">
+          <p>Le sexe est obligatoire.</p>
+        </div>
       </div>
+      <!-- Téléphone -->
       <div class="form-group">
         <label for="phone">Téléphone :</label>
         <input class="form-control" formControlName="phone" id="phone" />
+        <div class="error-message" *ngIf="phone?.invalid && phone?.touched">
+          <p *ngIf="phone?.errors?.['required']">Le numéro de téléphone est obligatoire.</p>
+          <p *ngIf="phone?.errors?.['pattern']">Le numéro doit contenir exactement 10 chiffres.</p>
+        </div>
       </div>
+      <!-- Email -->
       <div class="form-group">
         <label for="mail">Adresse mail :</label>
         <input class="form-control" formControlName="mail" id="mail" />
+        <div class="error-message" *ngIf="mail?.invalid && mail?.touched">
+          <p *ngIf="mail?.errors?.['required']">L'adresse mail est obligatoire.</p>
+          <p *ngIf="mail?.errors?.['email']">L'adresse mail n'est pas valide.</p>
+        </div>
       </div>
+      <!-- Mot de passe -->
       <div class="form-group">
         <label for="password">Mot de passe :</label>
         <input class="form-control" formControlName="password" id="password" type="password" />
+        <div class="error-message" *ngIf="password?.invalid && password?.touched">
+          <p *ngIf="password?.errors?.['required']">Le mot de passe est obligatoire.</p>
+          <p *ngIf="password?.errors?.['minlength']">Le mot de passe doit contenir au moins 6 caractères.</p>
+        </div>
       </div>
+      <!-- Confirmation du mot de passe -->
       <div class="form-group">
         <label for="confirmpassword">Confirmer le mot de passe :</label>
         <input class="form-control" formControlName="confirmpassword" id="confirmpassword" type="password" />
+        <div class="error-message" *ngIf="confirmpassword?.invalid && confirmpassword?.touched">
+          <p *ngIf="confirmpassword?.errors?.['required']">Veuillez confirmer votre mot de passe.</p>
+          <p *ngIf="accountCreationForm.hasError('mismatch')">Les mots de passe ne correspondent pas.</p>
+        </div>
       </div>
+      <!-- Bouton d'inscription -->
       <div class="form-group">
-        <button class="submit-button" type="submit" [disabled]="accountCreationForm.invalid" (click)="Inscription()">Inscription</button>
+        <button class="submit-button" type="submit" [disabled]="accountCreationForm.invalid">Inscription</button>
       </div>
     </form>
   </div>
   <div class="success-message" *ngIf="validation">
-    <p>Inscription réussie !</p>
+    <p>Inscription réussie !</p>
   </div>
   <div class="login-link">
     <p>Vous avez déjà un compte ? <a class="login-anchor" routerLink="/connection">Connectez-vous ici</a></p>

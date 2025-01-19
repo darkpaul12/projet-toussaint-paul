@@ -2,3 +2,14 @@
   background: url('https://c4.wallpaperflare.com/wallpaper/445/523/677/dragon-ball-dragon-ball-z-frieza-dragon-ball-goku-wallpaper-preview.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+.is-invalid {
+  border-color: #dc3545;
+}
+.invalid-feedback {
+  color: #dc3545;
+}
+.error-message {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
